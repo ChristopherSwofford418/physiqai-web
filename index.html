@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PhysiqAI - Your AI Personal Trainer</title>
+  <meta name="description" content="Take a photo, get a personalized workout plan. PhysiqAI is your AI-powered personal trainer." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0f172a;
+      color: #e2e8f0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 24px;
+      width: 100%;
+    }
+
+    /* NAV */
+    nav {
+      padding: 24px 0;
+      border-bottom: 1px solid #1e293b;
+    }
+    nav .container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo-emoji { font-size: 28px; }
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: #f8fafc;
+      letter-spacing: -0.5px;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 80px 0 60px;
+      text-align: center;
+    }
+    .hero-emoji {
+      font-size: 72px;
+      display: block;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: clamp(36px, 6vw, 56px);
+      font-weight: 800;
+      color: #f8fafc;
+      line-height: 1.1;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+    }
+    .hero h1 span { color: #2563EB; }
+    .tagline {
+      font-size: clamp(18px, 3vw, 22px);
+      color: #94a3b8;
+      margin-bottom: 12px;
+    }
+    .hero-sub {
+      font-size: 16px;
+      color: #64748b;
+      max-width: 480px;
+      margin: 0 auto 40px;
+      line-height: 1.6;
+    }
+
+    /* APP STORE BUTTON */
+    .app-store-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #334155;
+      color: #cbd5e1;
+      border: 1px solid #475569;
+      border-radius: 12px;
+      padding: 14px 28px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: default;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .app-store-btn:hover { background: #3d4f63; }
+    .app-store-btn svg { flex-shrink: 0; }
+
+    /* FEATURES */
+    .features {
+      padding: 60px 0;
+    }
+    .features-title {
+      text-align: center;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #2563EB;
+      margin-bottom: 40px;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .card {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 16px;
+      padding: 28px 24px;
+    }
+    .card-icon {
+      font-size: 36px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .card h3 {
+      font-size: 17px;
+      font-weight: 700;
+      color: #f1f5f9;
+      margin-bottom: 10px;
+    }
+    .card p {
+      font-size: 14px;
+      color: #94a3b8;
+      line-height: 1.6;
+    }
+
+    /* FOOTER */
+    footer {
+      margin-top: auto;
+      border-top: 1px solid #1e293b;
+      padding: 28px 0;
+      text-align: center;
+    }
+    footer .footer-links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      font-size: 14px;
+      color: #64748b;
+    }
+    footer a {
+      color: #94a3b8;
+      text-decoration: none;
+    }
+    footer a:hover { color: #2563EB; }
+    .sep { color: #334155; }
+
+    @media (max-width: 600px) {
+      .cards { grid-template-columns: 1fr; }
+      .hero { padding: 60px 0 40px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="container">
+      <span class="logo-emoji">💪</span>
+      <span class="logo-text">PhysiqAI</span>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <span class="hero-emoji">💪</span>
+        <h1>Your <span>AI Personal</span> Trainer</h1>
+        <p class="tagline">Your AI Personal Trainer</p>
+        <p class="hero-sub">Take a photo of yourself and get a personalized workout plan built around your body, goals, and fitness level. No gym required.</p>
+        <a class="app-store-btn" href="#">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          Coming Soon on App Store
+        </a>
+      </div>
+    </section>
+
+    <section class="features">
+      <div class="container">
+        <p class="features-title">What PhysiqAI Does</p>
+        <div class="cards">
+          <div class="card">
+            <span class="card-icon">📸</span>
+            <h3>Photo Analysis</h3>
+            <p>Snap a quick photo and our AI analyzes your physique to understand your current fitness starting point.</p>
+          </div>
+          <div class="card">
+            <span class="card-icon">🎯</span>
+            <h3>Personalized Plans</h3>
+            <p>Get a custom workout plan tailored to your body type, goals, and available equipment. No cookie-cutter routines.</p>
+          </div>
+          <div class="card">
+            <span class="card-icon">📈</span>
+            <h3>Track Progress</h3>
+            <p>Log your workouts and watch your plan adapt as you improve. Your AI trainer evolves with you.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="/privacy">Privacy Policy</a>
+        <span class="sep">|</span>
+        <a href="/terms">Terms of Service</a>
+        <span class="sep">|</span>
+        <a href="mailto:info@physiqai.io">info@physiqai.io</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
