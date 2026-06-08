@@ -3,224 +3,775 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PhysiqAI - Your AI Personal Trainer</title>
-  <meta name="description" content="Take a photo, get a personalized workout plan. PhysiqAI is your AI-powered personal trainer." />
+  <title>PhysiqAI — Your AI Personal Trainer, Always in Your Pocket</title>
+  <meta name="description" content="PhysiqAI is your AI personal trainer. Get custom workout plans, nutrition guidance, and progress tracking — personalized to your body and goals. Start free." />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    body {
-      background: #0f172a;
-      color: #e2e8f0;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+    :root {
+      --bg: #0a0f1a;
+      --bg2: #0e0f1e;
+      --bg3: #13142a;
+      --primary: #6366f1;
+      --primary-alt: #8b5cf6;
+      --primary-dark: #4f46e5;
+      --primary-glow: rgba(99, 102, 241, 0.15);
+      --text: #f5f3ff;
+      --text-muted: #94a3b8;
+      --border: rgba(99, 102, 241, 0.18);
+      --card-bg: rgba(14, 15, 30, 0.8);
     }
 
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 0 24px;
-      width: 100%;
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
     }
 
     /* NAV */
     nav {
-      padding: 24px 0;
-      border-bottom: 1px solid #1e293b;
-    }
-    nav .container {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
       display: flex;
       align-items: center;
-      gap: 10px;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      background: rgba(10, 15, 26, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
     }
-    .logo-emoji { font-size: 28px; }
-    .logo-text {
-      font-size: 20px;
+    .nav-logo {
+      font-size: 1.2rem;
       font-weight: 700;
-      color: #f8fafc;
-      letter-spacing: -0.5px;
+      color: var(--text);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
+    .nav-logo span { color: var(--primary); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .btn-nav {
+      background: linear-gradient(135deg, var(--primary), var(--primary-alt));
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.85rem;
+      padding: 0.5rem 1.25rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.15s;
+    }
+    .btn-nav:hover { opacity: 0.9; transform: translateY(-1px); }
+    @media (max-width: 768px) { .nav-links { display: none; } }
 
     /* HERO */
     .hero {
-      padding: 80px 0 60px;
-      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8rem 2rem 5rem;
+      position: relative;
+      overflow: hidden;
     }
-    .hero-emoji {
-      font-size: 72px;
-      display: block;
-      margin-bottom: 24px;
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -15%;
+      left: 40%;
+      transform: translateX(-50%);
+      width: 1000px;
+      height: 1000px;
+      background: radial-gradient(circle, rgba(99,102,241,0.1) 0%, rgba(139,92,246,0.05) 40%, transparent 70%);
+      pointer-events: none;
     }
-    .hero h1 {
-      font-size: clamp(36px, 6vw, 56px);
-      font-weight: 800;
-      color: #f8fafc;
-      line-height: 1.1;
-      letter-spacing: -1px;
-      margin-bottom: 16px;
+    .hero-inner {
+      max-width: 1100px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
     }
-    .hero h1 span { color: #2563EB; }
-    .tagline {
-      font-size: clamp(18px, 3vw, 22px);
-      color: #94a3b8;
-      margin-bottom: 12px;
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; text-align: center; }
+      .hero-ctas { justify-content: center; }
     }
-    .hero-sub {
-      font-size: 16px;
-      color: #64748b;
-      max-width: 480px;
-      margin: 0 auto 40px;
-      line-height: 1.6;
-    }
-
-    /* APP STORE BUTTON */
-    .app-store-btn {
+    .hero-badge {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      background: #334155;
-      color: #cbd5e1;
-      border: 1px solid #475569;
-      border-radius: 12px;
-      padding: 14px 28px;
-      font-size: 15px;
+      gap: 0.4rem;
+      background: var(--primary-glow);
+      border: 1px solid var(--border);
+      color: var(--primary);
+      font-size: 0.8rem;
       font-weight: 600;
-      cursor: default;
-      text-decoration: none;
-      transition: background 0.2s;
-    }
-    .app-store-btn:hover { background: #3d4f63; }
-    .app-store-btn svg { flex-shrink: 0; }
-
-    /* FEATURES */
-    .features {
-      padding: 60px 0;
-    }
-    .features-title {
-      text-align: center;
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 1.5px;
+      padding: 0.35rem 0.9rem;
+      border-radius: 100px;
+      margin-bottom: 1.5rem;
       text-transform: uppercase;
-      color: #2563EB;
-      margin-bottom: 40px;
+      letter-spacing: 0.05em;
     }
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.25rem;
     }
-    .card {
-      background: #1e293b;
-      border: 1px solid #334155;
-      border-radius: 16px;
-      padding: 28px 24px;
+    .hero h1 em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--primary), var(--primary-alt));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
-    .card-icon {
-      font-size: 36px;
-      margin-bottom: 16px;
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 480px;
+      margin-bottom: 2rem;
+    }
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: linear-gradient(135deg, var(--primary), var(--primary-alt));
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 0.85rem 1.75rem;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: all 0.2s;
+      box-shadow: 0 0 20px rgba(99,102,241,0.3);
+    }
+    .btn-primary:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+      box-shadow: 0 0 35px rgba(99,102,241,0.45);
+    }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: transparent;
+      color: var(--text);
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 0.85rem 1.75rem;
+      border-radius: 10px;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      transition: all 0.2s;
+    }
+    .btn-secondary:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    /* MOCKUP */
+    .hero-mockup { display: flex; justify-content: center; }
+    .phone-mockup {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 1.5rem;
+      width: 270px;
+      box-shadow: 0 0 60px rgba(99,102,241,0.15), 0 40px 80px rgba(0,0,0,0.4);
+    }
+    .workout-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .workout-title { font-size: 0.75rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; }
+    .workout-badge {
+      font-size: 0.65rem;
+      background: var(--primary-glow);
+      border: 1px solid var(--border);
+      color: var(--primary);
+      padding: 0.2rem 0.5rem;
+      border-radius: 6px;
+      font-weight: 700;
+    }
+    .workout-plan-name {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+    .workout-plan-sub {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .workout-exercises { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1rem; }
+    .workout-ex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(99,102,241,0.06);
+      border: 1px solid rgba(99,102,241,0.12);
+      border-radius: 8px;
+      padding: 0.6rem 0.75rem;
+    }
+    .workout-ex-name { font-size: 0.8rem; font-weight: 600; }
+    .workout-ex-sets { font-size: 0.72rem; color: var(--primary); font-weight: 700; }
+    .workout-progress-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      margin-bottom: 0.35rem;
+    }
+    .workout-progress-track {
+      background: rgba(99,102,241,0.1);
+      border-radius: 100px;
+      height: 6px;
+      overflow: hidden;
+      margin-bottom: 1rem;
+    }
+    .workout-progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), var(--primary-alt));
+      border-radius: 100px;
+      width: 68%;
+    }
+    .workout-cta {
+      background: linear-gradient(135deg, var(--primary), var(--primary-alt));
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 0.6rem;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    /* SOCIAL PROOF */
+    .social-proof {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 2rem;
+    }
+    .social-proof-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .proof-label { font-size: 0.85rem; color: var(--text-muted); text-align: center; }
+    .proof-divider { width: 1px; height: 40px; background: var(--border); }
+    .proof-stat { text-align: center; }
+    .proof-stat-val {
+      font-size: 1.6rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--primary), var(--primary-alt));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
       display: block;
     }
-    .card h3 {
-      font-size: 17px;
+    .proof-stat-label { font-size: 0.8rem; color: var(--text-muted); }
+    @media (max-width: 600px) { .proof-divider { display: none; } }
+
+    /* SECTIONS */
+    section { padding: 6rem 2rem; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-tag {
+      display: inline-block;
+      font-size: 0.75rem;
       font-weight: 700;
-      color: #f1f5f9;
-      margin-bottom: 10px;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.75rem;
     }
-    .card p {
-      font-size: 14px;
-      color: #94a3b8;
-      line-height: 1.6;
+    .section-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
     }
+    .section-sub {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 540px;
+      margin-bottom: 3.5rem;
+    }
+
+    /* FEATURES */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.25rem;
+    }
+    .feature-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.75rem;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    }
+    .feature-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--primary);
+      box-shadow: 0 0 30px rgba(99,102,241,0.12);
+    }
+    .feature-icon { font-size: 1.75rem; margin-bottom: 1rem; display: block; }
+    .feature-title { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .feature-desc { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* HOW IT WORKS */
+    .how-bg { background: var(--bg2); }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+    .step { display: flex; flex-direction: column; align-items: flex-start; gap: 1rem; }
+    .step-num {
+      width: 48px; height: 48px;
+      border-radius: 12px;
+      background: var(--primary-glow);
+      border: 1px solid var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+    .step-title { font-size: 1.1rem; font-weight: 700; }
+    .step-desc { font-size: 0.9rem; color: var(--text-muted); }
+
+    /* PRICING */
+    .pricing-card {
+      max-width: 420px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      border: 1px solid var(--primary);
+      border-radius: 20px;
+      padding: 2.5rem;
+      text-align: center;
+      box-shadow: 0 0 60px rgba(99,102,241,0.12);
+    }
+    .pricing-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--primary), var(--primary-alt));
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.3rem 0.9rem;
+      border-radius: 100px;
+      margin-bottom: 1.5rem;
+    }
+    .pricing-price {
+      font-size: 3.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--primary), var(--primary-alt));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+    }
+    .pricing-price sup { font-size: 1.5rem; vertical-align: top; margin-top: 0.5rem; }
+    .pricing-period { font-size: 1rem; color: var(--text-muted); margin-bottom: 0.5rem; }
+    .pricing-trial { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 2rem; }
+    .pricing-features { list-style: none; text-align: left; margin-bottom: 2rem; }
+    .pricing-features li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.6rem 0;
+      font-size: 0.95rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .pricing-features li:last-child { border-bottom: none; }
+    .pricing-features li::before { content: '✓'; color: var(--primary); font-weight: 700; }
+    .btn-pricing {
+      display: block;
+      background: linear-gradient(135deg, var(--primary), var(--primary-alt));
+      color: #fff;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 1rem;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: all 0.2s;
+      box-shadow: 0 0 20px rgba(99,102,241,0.3);
+    }
+    .btn-pricing:hover { opacity: 0.9; transform: translateY(-2px); }
+
+    /* TESTIMONIALS */
+    .testimonials-bg { background: var(--bg2); }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+    .testimonial-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.75rem;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .testimonial-card:hover { transform: translateY(-4px); border-color: var(--primary); }
+    .testimonial-stars {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      letter-spacing: 2px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-alt));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .testimonial-text { font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 1.25rem; }
+    .testimonial-author { display: flex; align-items: center; gap: 0.75rem; }
+    .author-avatar {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: var(--primary-glow);
+      border: 1px solid var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    .author-name { font-size: 0.9rem; font-weight: 700; }
+    .author-handle { font-size: 0.78rem; color: var(--text-muted); }
+
+    /* DOWNLOAD CTA */
+    .download-section {
+      text-align: center;
+      padding: 6rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .download-section::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 700px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(99,102,241,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .download-section h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+    .download-section p { font-size: 1.05rem; color: var(--text-muted); margin-bottom: 2.5rem; }
+    .download-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 
     /* FOOTER */
     footer {
-      margin-top: auto;
-      border-top: 1px solid #1e293b;
-      padding: 28px 0;
-      text-align: center;
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      padding: 2rem;
     }
-    footer .footer-links {
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
       display: flex;
-      justify-content: center;
       align-items: center;
-      gap: 8px;
+      justify-content: space-between;
       flex-wrap: wrap;
-      font-size: 14px;
-      color: #64748b;
+      gap: 1rem;
     }
-    footer a {
-      color: #94a3b8;
-      text-decoration: none;
-    }
-    footer a:hover { color: #2563EB; }
-    .sep { color: #334155; }
-
-    @media (max-width: 600px) {
-      .cards { grid-template-columns: 1fr; }
-      .hero { padding: 60px 0 40px; }
-    }
+    .footer-copy { font-size: 0.85rem; color: var(--text-muted); }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a { font-size: 0.85rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--primary); }
   </style>
 </head>
 <body>
 
-  <nav>
-    <div class="container">
-      <span class="logo-emoji">💪</span>
-      <span class="logo-text">PhysiqAI</span>
-    </div>
-  </nav>
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">💪 <span>Physiq</span>AI</a>
+  <ul class="nav-links">
+    <li><a href="#features">Features</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="https://apps.apple.com/us/app/id6777447224" class="btn-nav">Download Free</a></li>
+  </ul>
+</nav>
 
-  <main>
-    <section class="hero">
-      <div class="container">
-        <span class="hero-emoji">💪</span>
-        <h1>Your <span>AI Personal</span> Trainer</h1>
-        <p class="tagline">Your AI Personal Trainer</p>
-        <p class="hero-sub">Take a photo of yourself and get a personalized workout plan built around your body, goals, and fitness level. No gym required.</p>
-        <a class="app-store-btn" href="#">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-          Coming Soon on App Store
-        </a>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <div class="hero-badge">💪 AI Personal Training</div>
+      <h1>Your <em>AI Personal Trainer</em>, Always in Your Pocket</h1>
+      <p>PhysiqAI builds custom workout and nutrition plans tailored to your body, goals, and schedule — then adapts them as you progress. No gym membership required.</p>
+      <div class="hero-ctas">
+        <a href="https://apps.apple.com/us/app/id6777447224" class="btn-primary">🍎 Download on iOS</a>
+        <a href="#" class="btn-secondary">🤖 Get on Android</a>
       </div>
-    </section>
+    </div>
+    <div class="hero-mockup">
+      <div class="phone-mockup">
+        <div class="workout-header">
+          <span class="workout-title">Today's Plan</span>
+          <span class="workout-badge">AI Generated</span>
+        </div>
+        <div class="workout-plan-name">Push Day — Chest & Shoulders</div>
+        <div class="workout-plan-sub">Intermediate · 45 min · 6 exercises</div>
+        <div class="workout-exercises">
+          <div class="workout-ex">
+            <span class="workout-ex-name">Bench Press</span>
+            <span class="workout-ex-sets">4 × 8</span>
+          </div>
+          <div class="workout-ex">
+            <span class="workout-ex-name">Incline Dumbbell Press</span>
+            <span class="workout-ex-sets">3 × 10</span>
+          </div>
+          <div class="workout-ex">
+            <span class="workout-ex-name">Lateral Raises</span>
+            <span class="workout-ex-sets">3 × 15</span>
+          </div>
+          <div class="workout-ex">
+            <span class="workout-ex-name">Overhead Press</span>
+            <span class="workout-ex-sets">3 × 8</span>
+          </div>
+        </div>
+        <div class="workout-progress-label">
+          <span>Weekly Progress</span><span>68%</span>
+        </div>
+        <div class="workout-progress-track">
+          <div class="workout-progress-fill"></div>
+        </div>
+        <div class="workout-cta">Start Workout →</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <section class="features">
-      <div class="container">
-        <p class="features-title">What PhysiqAI Does</p>
-        <div class="cards">
-          <div class="card">
-            <span class="card-icon">📸</span>
-            <h3>Photo Analysis</h3>
-            <p>Snap a quick photo and our AI analyzes your physique to understand your current fitness starting point.</p>
-          </div>
-          <div class="card">
-            <span class="card-icon">🎯</span>
-            <h3>Personalized Plans</h3>
-            <p>Get a custom workout plan tailored to your body type, goals, and available equipment. No cookie-cutter routines.</p>
-          </div>
-          <div class="card">
-            <span class="card-icon">📈</span>
-            <h3>Track Progress</h3>
-            <p>Log your workouts and watch your plan adapt as you improve. Your AI trainer evolves with you.</p>
+<!-- SOCIAL PROOF -->
+<div class="social-proof">
+  <div class="social-proof-inner">
+    <div class="proof-label">Thousands are transforming<br>with AI-powered training</div>
+    <div class="proof-divider"></div>
+    <div class="proof-stat">
+      <span class="proof-stat-val">25K+</span>
+      <span class="proof-stat-label">Plans Generated</span>
+    </div>
+    <div class="proof-divider"></div>
+    <div class="proof-stat">
+      <span class="proof-stat-val">4.8★</span>
+      <span class="proof-stat-label">App Rating</span>
+    </div>
+    <div class="proof-divider"></div>
+    <div class="proof-stat">
+      <span class="proof-stat-val">100%</span>
+      <span class="proof-stat-label">Personalized to You</span>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="section-inner">
+    <div class="section-tag">Features</div>
+    <h2 class="section-title">A trainer that knows you inside out</h2>
+    <p class="section-sub">PhysiqAI combines the expertise of a personal trainer, nutritionist, and coach — available 24/7, no scheduling required.</p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <span class="feature-icon">📸</span>
+        <div class="feature-title">Photo Analysis</div>
+        <div class="feature-desc">Share an optional progress photo and our AI provides body composition feedback, identifies areas to focus on, and calibrates your plan accordingly.</div>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🏋️</span>
+        <div class="feature-title">Custom Workouts</div>
+        <div class="feature-desc">Every workout is built around your equipment, schedule, and fitness level. Whether you're at a gym, home, or hotel room — you always have a plan.</div>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🥗</span>
+        <div class="feature-title">Nutrition Plans</div>
+        <div class="feature-desc">Get a personalized nutrition plan with calorie and macro targets, meal ideas, and food swaps that fit your dietary preferences — not a cookie-cutter template.</div>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">📈</span>
+        <div class="feature-title">Progress Tracking</div>
+        <div class="feature-desc">Log workouts, track body measurements, and monitor strength gains over time. Visual charts show exactly how far you've come and where you're headed.</div>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🎯</span>
+        <div class="feature-title">Goal Setting</div>
+        <div class="feature-desc">Whether you're building muscle, losing fat, improving endurance, or just staying healthy — PhysiqAI sets realistic milestones and adapts your plan as you hit them.</div>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🔒</span>
+        <div class="feature-title">Privacy First</div>
+        <div class="feature-desc">Your body data is sensitive. PhysiqAI stores all personal data with end-to-end encryption. Your photos and metrics are never used to train external models.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how" class="how-bg">
+  <div class="section-inner">
+    <div class="section-tag">How It Works</div>
+    <h2 class="section-title">Your transformation starts in minutes</h2>
+    <p class="section-sub">Tell PhysiqAI about your goals and we'll build your entire training and nutrition plan before you finish your coffee.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div>
+          <div class="step-title">Share Goals & Photo</div>
+          <div class="step-desc">Tell us your goals, fitness level, available equipment, and schedule. Optionally share a progress photo for AI body analysis. Takes under 3 minutes.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div>
+          <div class="step-title">AI Builds Your Plan</div>
+          <div class="step-desc">PhysiqAI generates a fully customized workout split and nutrition plan, calibrated to your exact situation. No generic templates — built uniquely for you.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div>
+          <div class="step-title">Follow & Transform</div>
+          <div class="step-desc">Execute your plan, log your workouts, and watch the AI adapt as you progress. Stronger this week? Your next plan gets harder. That's how real growth happens.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="section-inner">
+    <div style="text-align: center; margin-bottom: 3rem;">
+      <div class="section-tag">Pricing</div>
+      <h2 class="section-title">A fraction of a real personal trainer</h2>
+      <p class="section-sub" style="margin: 0 auto;">Personal trainers cost $60–$150 per session. PhysiqAI gives you the same expertise for less than $10 a month.</p>
+    </div>
+    <div class="pricing-card">
+      <span class="pricing-badge">All Inclusive</span>
+      <div class="pricing-price"><sup>$</sup>9.99</div>
+      <div class="pricing-period">per month</div>
+      <div class="pricing-trial">7-day free trial — no credit card required</div>
+      <ul class="pricing-features">
+        <li>Unlimited custom workout plans</li>
+        <li>AI photo body analysis</li>
+        <li>Personalized nutrition plans</li>
+        <li>Progress tracking & charts</li>
+        <li>Goal milestone system</li>
+        <li>Plan auto-adapts as you progress</li>
+        <li>Encrypted private data storage</li>
+        <li>Priority support</li>
+      </ul>
+      <a href="https://apps.apple.com/us/app/id6777447224" class="btn-pricing">Start Free Trial</a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-bg">
+  <div class="section-inner">
+    <div class="section-tag">Testimonials</div>
+    <h2 class="section-title">Real people, real transformations</h2>
+    <p class="section-sub">From beginners who never set foot in a gym to athletes optimizing performance — PhysiqAI meets you where you are.</p>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-text">"I hired a personal trainer for 6 months and didn't see results like I did with PhysiqAI in 60 days. The AI actually adapts — when I get stronger, the workouts get harder. It feels like it's paying attention."</div>
+        <div class="testimonial-author">
+          <div class="author-avatar">D</div>
+          <div>
+            <div class="author-name">Derek P.</div>
+            <div class="author-handle">Lost 22 lbs in 3 months</div>
           </div>
         </div>
       </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container">
-      <div class="footer-links">
-        <a href="/privacy">Privacy Policy</a>
-        <span class="sep">|</span>
-        <a href="/terms">Terms of Service</a>
-        <span class="sep">|</span>
-        <a href="mailto:info@physiqai.io">info@physiqai.io</a>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-text">"As a mom of two with zero gym time, I needed something that could work around my schedule. PhysiqAI gave me a 30-min home workout plan that actually fits my life. Down 15 lbs and I actually feel strong now."</div>
+        <div class="testimonial-author">
+          <div class="author-avatar">L</div>
+          <div>
+            <div class="author-name">Lauren S.</div>
+            <div class="author-handle">Working out consistently for 5 months</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-text">"I've been lifting for 4 years and still hit plateaus. PhysiqAI's photo analysis identified weaknesses I couldn't see myself and completely restructured my programming. My bench went up 35 lbs in 10 weeks."</div>
+        <div class="testimonial-author">
+          <div class="author-avatar">C</div>
+          <div>
+            <div class="author-name">Carlos M.</div>
+            <div class="author-handle">Intermediate lifter, 4+ years</div>
+          </div>
+        </div>
       </div>
     </div>
-  </footer>
+  </div>
+</section>
+
+<!-- DOWNLOAD CTA -->
+<div class="download-section">
+  <h2>Build the body you've been putting off</h2>
+  <p>7-day free trial. No gym membership. No excuses.</p>
+  <div class="download-btns">
+    <a href="https://apps.apple.com/us/app/id6777447224" class="btn-primary">🍎 Download on iOS</a>
+    <a href="#" class="btn-secondary">🤖 Get on Android</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-copy">© 2026 PhysiqAI. All rights reserved.</div>
+    <div class="footer-links">
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/terms.html">Terms of Service</a>
+    </div>
+  </div>
+</footer>
 
 </body>
 </html>
