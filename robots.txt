@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://physiqai.io/sitemap.xml
