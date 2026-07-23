@@ -1,111 +1,195 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#09090b">
+  <meta name="description" content="PhysiqAI Terms of Service for the iOS app and companion member dashboard.">
   <title>Terms of Service | PhysiqAI</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0a0f1a; color: #e2e8f0; line-height: 1.7; }
-    .header { background: #0d1525; border-bottom: 1px solid rgba(255,255,255,0.06); padding: 20px 0; }
-    .header-inner { max-width: 780px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 12px; }
-    .logo { width: 36px; height: 36px; background: linear-gradient(135deg, #6366f1, #8b5cf6); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
-    .logo-text { font-size: 20px; font-weight: 800; color: #fff; }
-    .container { max-width: 780px; margin: 0 auto; padding: 48px 24px 80px; }
-    h1 { font-size: 32px; font-weight: 800; color: #fff; margin-bottom: 8px; }
-    .subtitle { color: #64748b; font-size: 14px; margin-bottom: 40px; }
-    h2 { font-size: 18px; font-weight: 700; color: #fff; margin: 36px 0 12px; }
-    p { color: #94a3b8; margin-bottom: 14px; font-size: 15px; }
-    ul { color: #94a3b8; margin: 0 0 14px 20px; font-size: 15px; }
-    ul li { margin-bottom: 6px; }
-    a { color: #818cf8; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .divider { border: none; border-top: 1px solid rgba(255,255,255,0.06); margin: 40px 0; }
-    .disclaimer { background: rgba(99,102,241,0.08); border: 1px solid rgba(99,102,241,0.2); border-radius: 10px; padding: 16px 20px; margin: 24px 0; }
-    .disclaimer p { color: #a5b4fc; margin: 0; font-size: 14px; }
+    :root {
+      --bg: #09090b;
+      --surface: rgba(24, 24, 27, .88);
+      --surface-strong: #1c1c20;
+      --text: #f7f7f8;
+      --muted: #b5b5bd;
+      --dim: #7e7e89;
+      --line: rgba(255, 255, 255, .11);
+      --red: #e63946;
+      --orange: #ff6b35;
+      --lime: #c7ff31;
+      --radius: 24px;
+    }
+
+    * { box-sizing: border-box; }
+    html { background: var(--bg); }
+    body {
+      min-width: 320px;
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 88% -8%, rgba(230, 57, 70, .26), transparent 29rem),
+        radial-gradient(circle at 7% 38%, rgba(255, 107, 53, .10), transparent 24rem),
+        var(--bg);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+
+    a { color: inherit; }
+    .site-header { max-width: 1160px; margin: 0 auto; padding: 22px 24px; }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+    .brand { display: inline-flex; align-items: center; gap: 9px; color: var(--text); font-size: 1.02rem; font-weight: 950; letter-spacing: -.045em; text-decoration: none; }
+    .brand-mark { display: grid; width: 31px; height: 31px; place-items: center; border-radius: 10px; background: linear-gradient(135deg, var(--red), var(--orange)); box-shadow: 0 8px 24px rgba(230, 57, 70, .34); }
+    .brand-mark::before { width: 12px; height: 12px; border: 3px solid #fff; border-radius: 50%; content: ""; }
+    .brand em { color: var(--red); font-style: normal; }
+    .header-link { padding: 9px 13px; border: 1px solid var(--line); border-radius: 11px; color: var(--muted); font-size: .78rem; font-weight: 850; text-decoration: none; }
+    .header-link:hover, .header-link:focus-visible { border-color: rgba(199, 255, 49, .65); color: var(--lime); }
+
+    main { max-width: 900px; margin: 0 auto; padding: 54px 24px 92px; }
+    .kicker { display: inline-flex; align-items: center; gap: 8px; color: var(--lime); font-size: .73rem; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; }
+    .kicker::before { width: 22px; height: 2px; background: currentColor; content: ""; }
+    h1 { max-width: 700px; margin: 13px 0 10px; font-size: clamp(2.8rem, 8vw, 5.3rem); font-weight: 950; letter-spacing: -.085em; line-height: .9; }
+    h1 span { color: var(--red); }
+    .updated { margin: 0; color: var(--dim); font-size: .87rem; }
+    .intro { max-width: 720px; margin: 35px 0 0; color: var(--muted); font-size: 1.08rem; }
+
+    .companion-callout, .medical-callout { margin: 30px 0; border-radius: 18px; padding: 20px 21px; }
+    .companion-callout { border: 1px solid rgba(199, 255, 49, .27); background: rgba(199, 255, 49, .06); }
+    .medical-callout { border: 1px solid rgba(230, 57, 70, .37); background: rgba(230, 57, 70, .10); }
+    .companion-callout strong, .medical-callout strong { display: block; margin-bottom: 4px; color: var(--text); font-size: .92rem; }
+    .companion-callout p, .medical-callout p { margin: 0; color: var(--muted); font-size: .93rem; }
+
+    .document { display: grid; gap: 17px; margin-top: 38px; }
+    section { padding: 25px 27px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); box-shadow: 0 18px 50px rgba(0, 0, 0, .16); }
+    h2 { margin: 0 0 10px; font-size: 1.1rem; letter-spacing: -.03em; }
+    p { margin: 0; color: var(--muted); font-size: .95rem; }
+    p + p { margin-top: 12px; }
+    ul { display: grid; gap: 7px; margin: 14px 0 0; padding-left: 19px; color: var(--muted); font-size: .95rem; }
+    li::marker { color: var(--lime); }
+    .contact { background: linear-gradient(130deg, rgba(230, 57, 70, .22), rgba(255, 107, 53, .13)); }
+    .contact a { color: var(--lime); font-weight: 800; text-underline-offset: 3px; }
+    footer { max-width: 900px; margin: 0 auto; padding: 0 24px 40px; color: var(--dim); font-size: .76rem; }
+
+    @media (max-width: 600px) {
+      .site-header { padding: 17px 17px; }
+      main { padding: 36px 17px 62px; }
+      h1 { font-size: clamp(2.55rem, 14vw, 4rem); }
+      section { padding: 21px 19px; border-radius: 19px; }
+      .header-link { padding: 8px 10px; }
+    }
   </style>
 </head>
 <body>
-  <div class="header">
+  <header class="site-header">
     <div class="header-inner">
-      <div class="logo">💪</div>
-      <div class="logo-text">PhysiqAI</div>
+      <a class="brand" href="/" aria-label="PhysiqAI home"><span class="brand-mark" aria-hidden="true"></span>PHYSIQ<em>AI</em></a>
+      <a class="header-link" href="/member">Member dashboard</a>
     </div>
-  </div>
-  <div class="container">
-    <h1>Terms of Service</h1>
-    <p class="subtitle">Last updated: June 8, 2026</p>
+  </header>
 
-    <p>Welcome to PhysiqAI. By downloading or using this app, you agree to these Terms of Service. Please read them carefully.</p>
+  <main>
+    <span class="kicker">Legal</span>
+    <h1>Terms of<br><span>Service.</span></h1>
+    <p class="updated">Last updated: July 22, 2026</p>
+    <p class="intro">These Terms govern your use of the PhysiqAI iOS app and its companion browser-based member dashboard. Please read them carefully before creating an account, starting a subscription, or using training features.</p>
 
-    <div class="disclaimer">
-      <p><strong>Not Medical Advice:</strong> PhysiqAI provides AI-generated fitness and nutrition suggestions for informational purposes only. Nothing in this app constitutes medical advice, diagnosis, or treatment. Always consult a qualified healthcare professional before starting any new fitness or diet program.</p>
+    <aside class="companion-callout">
+      <strong>How the member dashboard fits in</strong>
+      <p>The browser member dashboard is an account-scoped companion to the PhysiqAI iOS app. It does not process payments or replace Apple subscription management.</p>
+    </aside>
+
+    <aside class="medical-callout">
+      <strong>Not medical advice</strong>
+      <p>PhysiqAI provides AI-generated fitness and nutrition suggestions for informational purposes only. Nothing in PhysiqAI constitutes medical advice, diagnosis, or treatment. Consult a qualified healthcare professional before beginning a new fitness or diet program.</p>
+    </aside>
+
+    <div class="document">
+      <section>
+        <h2>Eligibility</h2>
+        <p>You must be at least 16 years old to use PhysiqAI. By using PhysiqAI, you confirm that you meet this requirement.</p>
+      </section>
+
+      <section>
+        <h2>User account</h2>
+        <ul>
+          <li>You are responsible for maintaining the security of your account credentials.</li>
+          <li>You must provide accurate registration information.</li>
+          <li>You are responsible for activity that occurs through your account.</li>
+          <li>You may not share your account with another person.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>AI analysis and content</h2>
+        <p>PhysiqAI uses artificial intelligence to generate personalized fitness plans based on the information you provide, including photos.</p>
+        <ul>
+          <li>You consent to the processing of a submitted photo by our AI system.</li>
+          <li>AI-generated plans are suggestions, not professional advice.</li>
+          <li>Results vary and are not guaranteed.</li>
+          <li>You confirm that you are the person depicted in, or have permission to submit, any photo you provide.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Subscriptions and billing</h2>
+        <p>Subscription offerings, prices, renewals, and payment terms are displayed through Apple’s App Store at the time of purchase and are governed by the applicable Apple terms.</p>
+        <ul>
+          <li>iOS subscriptions are purchased and billed through the Apple App Store.</li>
+          <li>Subscriptions renew automatically unless cancelled in accordance with the terms presented by Apple.</li>
+          <li>You can manage or cancel a subscription through your Apple ID subscription settings.</li>
+          <li>The browser member dashboard does not take payments or store payment-card information.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Acceptable use</h2>
+        <p>You agree not to:</p>
+        <ul>
+          <li>Submit photos of other people without their consent.</li>
+          <li>Use PhysiqAI for an unlawful purpose.</li>
+          <li>Attempt to reverse engineer, hack, or disrupt PhysiqAI.</li>
+          <li>Misrepresent your identity or information.</li>
+          <li>Upload offensive, illegal, or harmful content.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Intellectual property</h2>
+        <p>All PhysiqAI content, features, and functionality—including AI-generated plans, text, graphics, and code—are owned by PhysiqAI and protected by applicable intellectual-property laws. You may not reproduce or distribute any portion without written permission.</p>
+      </section>
+
+      <section>
+        <h2>Disclaimer of warranties</h2>
+        <p>PhysiqAI is provided “as is” without warranties of any kind. We do not guarantee that it will be error-free or uninterrupted, or that AI-generated fitness plans will achieve a particular outcome. Use PhysiqAI at your own risk.</p>
+      </section>
+
+      <section>
+        <h2>Limitation of liability</h2>
+        <p>To the fullest extent permitted by law, PhysiqAI will not be liable for indirect, incidental, special, consequential, or punitive damages arising from your use of PhysiqAI, including physical injury arising from following AI-generated fitness suggestions.</p>
+      </section>
+
+      <section>
+        <h2>Account deletion</h2>
+        <p>You may request deletion of your account through the iOS app’s Settings &gt; Delete Account flow. Upon deletion, personal data will be removed from our systems within 30 days, subject to any retention required by law.</p>
+      </section>
+
+      <section>
+        <h2>Changes to these Terms</h2>
+        <p>We may update these Terms from time to time. Continued use of PhysiqAI after an update constitutes acceptance of the revised Terms.</p>
+      </section>
+
+      <section>
+        <h2>Governing law</h2>
+        <p>These Terms are governed by the laws of the State of Georgia, United States, without regard to conflict-of-law provisions.</p>
+      </section>
+
+      <section class="contact">
+        <h2>Contact us</h2>
+        <p>Questions about these Terms can be sent to <a href="mailto:support@physiqai.io">support@physiqai.io</a>. You can also visit <a href="https://physiqai.io">physiqai.io</a>.</p>
+      </section>
     </div>
+  </main>
 
-    <h2>Eligibility</h2>
-    <p>You must be at least 16 years old to use PhysiqAI. By using the app, you confirm that you meet this requirement.</p>
-
-    <h2>User Account</h2>
-    <ul>
-      <li>You are responsible for maintaining the security of your account credentials</li>
-      <li>You must provide accurate information when registering</li>
-      <li>You are responsible for all activity that occurs under your account</li>
-      <li>You may not share your account with others</li>
-    </ul>
-
-    <h2>AI Analysis and Content</h2>
-    <p>PhysiqAI uses artificial intelligence to generate personalized fitness plans based on information you provide, including photos. By submitting a photo for analysis, you:</p>
-    <ul>
-      <li>Consent to your photo being processed by our AI system</li>
-      <li>Acknowledge that AI-generated plans are suggestions only, not professional advice</li>
-      <li>Understand that results may vary and are not guaranteed</li>
-      <li>Confirm you are the person depicted in the submitted photo</li>
-    </ul>
-
-    <h2>Subscription and Billing</h2>
-    <p>PhysiqAI offers a monthly subscription at <strong>$9.99/month</strong>.</p>
-    <ul>
-      <li>Subscriptions are billed monthly through Apple App Store or Google Play</li>
-      <li>Your subscription automatically renews unless canceled at least 24 hours before the end of the current period</li>
-      <li>You can manage and cancel your subscription in your device's App Store or Play Store settings</li>
-      <li>No refunds are provided for partial subscription periods</li>
-      <li>Prices are subject to change with advance notice</li>
-    </ul>
-
-    <h2>Acceptable Use</h2>
-    <p>You agree not to:</p>
-    <ul>
-      <li>Submit photos of other people without their consent</li>
-      <li>Use the app for any unlawful purpose</li>
-      <li>Attempt to reverse engineer, hack, or disrupt the app</li>
-      <li>Misrepresent your identity or information</li>
-      <li>Upload offensive, illegal, or harmful content</li>
-    </ul>
-
-    <h2>Intellectual Property</h2>
-    <p>All content, features, and functionality in PhysiqAI — including AI-generated plans, text, graphics, and code — are owned by PhysiqAI and protected by applicable intellectual property laws. You may not reproduce or distribute any part of the app without written permission.</p>
-
-    <h2>Disclaimer of Warranties</h2>
-    <p>PhysiqAI is provided "as is" without warranties of any kind. We do not guarantee that the app will be error-free, uninterrupted, or that AI-generated fitness plans will achieve any particular result. Use the app at your own risk.</p>
-
-    <h2>Limitation of Liability</h2>
-    <p>To the fullest extent permitted by law, PhysiqAI shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of the app, including any physical injury resulting from following AI-generated fitness suggestions.</p>
-
-    <h2>Account Deletion</h2>
-    <p>You may delete your account at any time through Settings > Delete Account. Upon deletion, all your personal data will be permanently removed from our systems within 30 days.</p>
-
-    <h2>Changes to Terms</h2>
-    <p>We may update these Terms from time to time. Continued use of the app after changes constitutes your acceptance of the updated Terms.</p>
-
-    <h2>Governing Law</h2>
-    <p>These Terms are governed by the laws of the State of Georgia, United States, without regard to conflict of law provisions.</p>
-
-    <hr class="divider" />
-
-    <h2>Contact Us</h2>
-    <p>Questions about these Terms? Contact us at:</p>
-    <p>Email: <a href="mailto:support@physiqai.io">support@physiqai.io</a></p>
-    <p>Website: <a href="https://physiqai.io">physiqai.io</a></p>
-  </div>
+  <footer>PhysiqAI — train with intent, track the work, and build momentum.</footer>
 </body>
 </html>
