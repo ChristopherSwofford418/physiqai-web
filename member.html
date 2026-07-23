@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#09090b">
+  <meta name="description" content="The secure PhysiqAI member training dashboard.">
+  <title>Member Training Dashboard | PhysiqAI</title>
+  <link rel="stylesheet" href="/assets/member/member.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar" aria-label="PhysiqAI member area header">
+      <a class="brand" href="/" aria-label="PhysiqAI home"><span class="brand-mark" aria-hidden="true"></span>PHYSIQ<span style="color:var(--red-hot)">AI</span></a>
+      <div class="topbar-actions">
+        <span class="desktop-status"><span class="status-dot"></span> Training system online</span>
+        <a class="button button-outline" style="min-height:38px;padding:0 13px;font-size:.78rem" href="/">Public site</a>
+      </div>
+    </header>
+
+    <main>
+      <section id="auth-view" class="hero-grid" aria-labelledby="auth-title">
+        <div class="auth-panel">
+          <span class="eyebrow">Member training hub</span>
+          <h1 id="auth-title">Build strength.<br><em>Own your next rep.</em></h1>
+          <p>Train with a focused plan, track the work that matters, and see your momentum build week after week.</p>
+          <div class="auth-tabs" role="tablist" aria-label="Authentication mode">
+            <button class="tab active" type="button" id="sign-in-tab" data-auth-mode="signin" role="tab" aria-selected="true">Sign in</button>
+            <button class="tab" type="button" id="sign-up-tab" data-auth-mode="signup" role="tab" aria-selected="false">Create account</button>
+          </div>
+          <form id="auth-form" class="form-grid" novalidate>
+            <div class="field" id="name-field" hidden>
+              <label for="auth-name">Your name</label>
+              <input id="auth-name" name="name" autocomplete="name" maxlength="80" placeholder="What should your coach call you?">
+            </div>
+            <div class="field">
+              <label for="auth-email">Email</label>
+              <input id="auth-email" name="email" type="email" autocomplete="email" required placeholder="you@example.com">
+            </div>
+            <div class="field">
+              <label for="auth-password">Password</label>
+              <input id="auth-password" name="password" type="password" autocomplete="current-password" required minlength="8" placeholder="At least 8 characters">
+            </div>
+            <p class="form-error" id="auth-error" role="alert" aria-live="polite"></p>
+            <button id="auth-submit" class="button button-primary button-full" type="submit">Enter training dashboard <span aria-hidden="true">→</span></button>
+            <p class="form-note">By continuing, you agree to the <a href="/terms">Terms of Use</a> and <a href="/privacy">Privacy Policy</a>. The dashboard is a training tool, not medical guidance.</p>
+          </form>
+        </div>
+        <aside class="auth-promise" aria-label="PhysiqAI membership benefits">
+          <span class="tag lime">Designed to compound</span>
+          <div class="stat-rack" aria-label="Training dashboard highlights">
+            <div><strong>01</strong><span>plan your work</span></div>
+            <div><strong>02</strong><span>log the lift</span></div>
+            <div><strong>03</strong><span>see momentum</span></div>
+          </div>
+          <div class="promise-main">Less guesswork.<br><mark>More progress.</mark></div>
+          <p class="promise-text">Your web dashboard shares the same secure, account-scoped data foundation as the next-generation PhysiqAI app.</p>
+        </aside>
+      </section>
+
+      <section id="app-view" class="dashboard" hidden aria-label="PhysiqAI training dashboard">
+        <aside class="sidebar">
+          <a class="brand" href="/" aria-label="PhysiqAI home"><span class="brand-mark" aria-hidden="true"></span>PHYSIQ<span style="color:var(--red-hot)">AI</span></a>
+          <nav class="nav" aria-label="Member dashboard navigation">
+            <button type="button" class="active" data-view-target="today-view"><span class="nav-icon" aria-hidden="true">◉</span>Today</button>
+            <button type="button" data-view-target="plan-view"><span class="nav-icon" aria-hidden="true">▦</span>Training plan</button>
+            <button type="button" data-view-target="progress-view"><span class="nav-icon" aria-hidden="true">↗</span>Progress</button>
+            <button type="button" data-view-target="profile-view"><span class="nav-icon" aria-hidden="true">◎</span>Profile</button>
+          </nav>
+          <div class="sidebar-bottom">
+            <div class="member-card">
+              <div class="member-avatar" id="member-initials">PA</div>
+              <span class="member-name" id="member-name">PhysiqAI athlete</span>
+              <span class="member-tier" id="member-tier">Member dashboard</span>
+              <button id="sign-out" class="button button-quiet" type="button">Sign out</button>
+            </div>
+          </div>
+        </aside>
+
+        <div class="main">
+          <header class="mobile-topbar">
+            <a class="brand" href="/" aria-label="PhysiqAI home"><span class="brand-mark" aria-hidden="true"></span>PHYSIQ<span style="color:var(--red-hot)">AI</span></a>
+            <button id="mobile-sign-out" class="button button-quiet" type="button">Sign out</button>
+          </header>
+
+          <section class="view active" id="today-view" aria-labelledby="today-heading">
+            <div class="section-heading">
+              <div>
+                <span class="eyebrow">Today’s session</span>
+                <h1 id="today-heading">Ready to raise<br>your baseline?</h1>
+                <p id="today-subtitle">Your training system is standing by.</p>
+              </div>
+              <span class="tag hot" id="membership-status">Account scoped</span>
+            </div>
+            <div class="dashboard-grid">
+              <article class="workout-hero">
+                <span class="tag lime">Next move</span>
+                <h2 id="next-workout-title">Build your first training week.</h2>
+                <p id="next-workout-copy">Choose a focused starter plan, then log your work here or in the PhysiqAI app.</p>
+                <button class="button button-lime" type="button" data-view-target="plan-view" id="next-workout-button">Build my plan <span aria-hidden="true">→</span></button>
+              </article>
+              <div class="metric-grid" aria-label="Training metrics">
+                <article class="metric"><span class="metric-label">Sessions this week</span><strong class="metric-value" id="sessions-week">0</strong><span class="metric-delta" id="sessions-delta">Start your streak</span></article>
+                <article class="metric"><span class="metric-label">Minutes logged</span><strong class="metric-value" id="minutes-week">0</strong><span class="metric-delta">Make every rep count</span></article>
+                <article class="metric"><span class="metric-label">Readiness</span><strong class="metric-value" id="readiness-value">—</strong><span class="metric-delta">Log a check-in</span></article>
+                <article class="metric"><span class="metric-label">Current focus</span><strong class="metric-value" id="focus-value" style="font-size:1.1rem;line-height:1.08;margin-top:18px">Your goal</strong><span class="metric-delta">Make it personal</span></article>
+              </div>
+            </div>
+            <div class="dashboard-grid" style="margin-top:20px">
+              <article class="panel panel-padding">
+                <div class="section-title"><h2>Plan at a glance</h2><button type="button" data-view-target="plan-view">View plan</button></div>
+                <div id="today-plan-list" class="plan-list"></div>
+              </article>
+              <article class="panel panel-padding">
+                <div class="section-title"><h2>Latest work</h2><button type="button" data-view-target="progress-view">Log session</button></div>
+                <div id="latest-sessions" class="session-list"></div>
+              </article>
+            </div>
+          </section>
+
+          <section class="view" id="plan-view" aria-labelledby="plan-heading">
+            <div class="section-heading">
+              <div>
+                <span class="eyebrow">Weekly architecture</span>
+                <h1 id="plan-heading">Your plan,<br>built around <em>your real life.</em></h1>
+                <p>Start with a proven weekly structure. You can swap the focus anytime as your constraints or objectives evolve.</p>
+              </div>
+              <span class="tag">Account-owned data</span>
+            </div>
+            <div class="content-grid">
+              <div id="active-plan-container"></div>
+              <article class="panel panel-padding">
+                <div class="section-title"><h2>Build a focused week</h2></div>
+                <form id="plan-form" class="panel-form">
+                  <div class="field"><label for="plan-focus">Your focus</label><select id="plan-focus" name="focus"><option value="Strength foundation">Strength foundation</option><option value="Muscle building">Muscle building</option><option value="Conditioning">Conditioning</option><option value="Full-body consistency">Full-body consistency</option></select></div>
+                  <div class="field"><label for="plan-days">Training days</label><select id="plan-days" name="days"><option value="3">3 days per week</option><option value="4">4 days per week</option><option value="5">5 days per week</option></select></div>
+                  <button class="button button-primary" type="submit">Create my training week</button>
+                  <p class="form-note">This creates a plan in your secure account. AI-generated plans remain available through an active, verified app membership during the controlled rollout.</p>
+                </form>
+              </article>
+            </div>
+          </section>
+
+          <section class="view" id="progress-view" aria-labelledby="progress-heading">
+            <div class="section-heading">
+              <div>
+                <span class="eyebrow">Momentum dashboard</span>
+                <h1 id="progress-heading">Track the work.<br>Feel the change.</h1>
+                <p>Consistency beats intensity when it is repeatable. Keep a clean record of your sessions and readiness.</p>
+              </div>
+              <span class="tag lime">Local-first mindset</span>
+            </div>
+            <div class="content-grid">
+              <article class="panel panel-padding">
+                <div class="section-title"><h2>Log today’s session</h2></div>
+                <form id="session-form" class="log-session">
+                  <div class="field"><label for="session-duration">Minutes</label><input id="session-duration" type="number" min="1" max="720" value="45" required></div>
+                  <div class="field"><label for="session-effort">RPE 1–10</label><input id="session-effort" type="number" min="1" max="10" value="7" required></div>
+                  <div class="field"><label for="session-notes">Win of the day</label><input id="session-notes" maxlength="180" placeholder="Optional note"></div>
+                  <button class="button button-lime" type="submit">Log it</button>
+                </form>
+                <div class="section-title" style="margin-top:31px"><h2>Session history</h2></div>
+                <div id="session-history" class="session-list"></div>
+              </article>
+              <article class="panel panel-padding">
+                <div class="section-title"><h2>Weekly readiness</h2></div>
+                <form id="checkin-form" class="panel-form">
+                  <div class="field"><label>Energy</label><div class="checkin-range" data-range="energy"><button class="range-choice" type="button" data-value="1">1</button><button class="range-choice" type="button" data-value="2">2</button><button class="range-choice" type="button" data-value="3">3</button><button class="range-choice active" type="button" data-value="4">4</button><button class="range-choice" type="button" data-value="5">5</button></div></div>
+                  <div class="field"><label>Recovery</label><div class="checkin-range" data-range="recovery"><button class="range-choice" type="button" data-value="1">1</button><button class="range-choice" type="button" data-value="2">2</button><button class="range-choice" type="button" data-value="3">3</button><button class="range-choice active" type="button" data-value="4">4</button><button class="range-choice" type="button" data-value="5">5</button></div></div>
+                  <div class="field"><label>Adherence</label><div class="checkin-range" data-range="adherence"><button class="range-choice" type="button" data-value="1">1</button><button class="range-choice" type="button" data-value="2">2</button><button class="range-choice" type="button" data-value="3">3</button><button class="range-choice active" type="button" data-value="4">4</button><button class="range-choice" type="button" data-value="5">5</button></div></div>
+                  <div class="field"><label for="checkin-note">Coach note</label><textarea id="checkin-note" maxlength="400" placeholder="What helped or got in the way this week?"></textarea></div>
+                  <button class="button button-primary" type="submit">Save weekly check-in</button>
+                </form>
+              </article>
+            </div>
+          </section>
+
+          <section class="view" id="profile-view" aria-labelledby="profile-heading">
+            <div class="section-heading">
+              <div>
+                <span class="eyebrow">Athlete profile</span>
+                <h1 id="profile-heading">Make the system<br>work for <em>you.</em></h1>
+                <p>Keep your goal and available equipment current so the training experience remains relevant.</p>
+              </div>
+            </div>
+            <div class="content-grid">
+              <article class="panel panel-padding">
+                <div class="section-title"><h2>Training profile</h2></div>
+                <form id="profile-form" class="panel-form">
+                  <div class="field"><label for="profile-name">Name</label><input id="profile-name" maxlength="80" required></div>
+                  <div class="field"><label for="profile-goal">Primary training goal</label><input id="profile-goal" maxlength="120" placeholder="e.g. Build strength and train 3x weekly"></div>
+                  <div class="field"><label for="profile-equipment">Available equipment</label><input id="profile-equipment" maxlength="300" placeholder="e.g. Dumbbells, bench, bands"></div>
+                  <button class="button button-primary" type="submit">Save training profile</button>
+                </form>
+              </article>
+              <article class="panel panel-padding">
+                <div class="section-title"><h2>Membership & support</h2></div>
+                <p style="color:var(--muted);font-size:.88rem;line-height:1.55">Membership status is verified by the App Store in the mobile app. This web dashboard is account-scoped and does not take payments.</p>
+                <p id="entitlement-copy" class="tag" style="margin:18px 0">Checking account access</p>
+                <form id="support-form" class="panel-form" style="margin-top:25px">
+                  <div class="field"><label for="support-message">Send support a note</label><textarea id="support-message" maxlength="1000" placeholder="What can we help with?"></textarea></div>
+                  <button class="button button-outline" type="submit">Send message</button>
+                </form>
+              </article>
+            </div>
+          </section>
+        </div>
+        <nav class="mobile-nav" aria-label="Member dashboard navigation">
+          <button class="active" type="button" data-view-target="today-view"><span aria-hidden="true">◉</span>Today</button>
+          <button type="button" data-view-target="plan-view"><span aria-hidden="true">▦</span>Plan</button>
+          <button type="button" data-view-target="progress-view"><span aria-hidden="true">↗</span>Progress</button>
+          <button type="button" data-view-target="profile-view"><span aria-hidden="true">◎</span>Profile</button>
+        </nav>
+      </section>
+    </main>
+  </div>
+  <div id="toast" class="toast" hidden role="status" aria-live="polite"></div>
+  <script type="module" src="/assets/member/member.js"></script>
+</body>
+</html>

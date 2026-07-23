@@ -1,103 +1,181 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#09090b">
+  <meta name="description" content="PhysiqAI Privacy Policy for the iOS app and companion member dashboard.">
   <title>Privacy Policy | PhysiqAI</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0a0f1a; color: #e2e8f0; line-height: 1.7; }
-    .header { background: #0d1525; border-bottom: 1px solid rgba(255,255,255,0.06); padding: 20px 0; }
-    .header-inner { max-width: 780px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 12px; }
-    .logo { width: 36px; height: 36px; background: linear-gradient(135deg, #6366f1, #8b5cf6); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
-    .logo-text { font-size: 20px; font-weight: 800; color: #fff; }
-    .container { max-width: 780px; margin: 0 auto; padding: 48px 24px 80px; }
-    h1 { font-size: 32px; font-weight: 800; color: #fff; margin-bottom: 8px; }
-    .subtitle { color: #64748b; font-size: 14px; margin-bottom: 40px; }
-    h2 { font-size: 18px; font-weight: 700; color: #fff; margin: 36px 0 12px; }
-    p { color: #94a3b8; margin-bottom: 14px; font-size: 15px; }
-    ul { color: #94a3b8; margin: 0 0 14px 20px; font-size: 15px; }
-    ul li { margin-bottom: 6px; }
-    a { color: #818cf8; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .divider { border: none; border-top: 1px solid rgba(255,255,255,0.06); margin: 40px 0; }
+    :root {
+      --bg: #09090b;
+      --surface: rgba(24, 24, 27, .88);
+      --text: #f7f7f8;
+      --muted: #b5b5bd;
+      --dim: #7e7e89;
+      --line: rgba(255, 255, 255, .11);
+      --red: #e63946;
+      --orange: #ff6b35;
+      --lime: #c7ff31;
+      --radius: 24px;
+    }
+
+    * { box-sizing: border-box; }
+    html { background: var(--bg); }
+    body {
+      min-width: 320px;
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 88% -8%, rgba(230, 57, 70, .26), transparent 29rem),
+        radial-gradient(circle at 7% 38%, rgba(255, 107, 53, .10), transparent 24rem),
+        var(--bg);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+
+    a { color: inherit; }
+    .site-header { max-width: 1160px; margin: 0 auto; padding: 22px 24px; }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+    .brand { display: inline-flex; align-items: center; gap: 9px; color: var(--text); font-size: 1.02rem; font-weight: 950; letter-spacing: -.045em; text-decoration: none; }
+    .brand-mark { display: grid; width: 31px; height: 31px; place-items: center; border-radius: 10px; background: linear-gradient(135deg, var(--red), var(--orange)); box-shadow: 0 8px 24px rgba(230, 57, 70, .34); }
+    .brand-mark::before { width: 12px; height: 12px; border: 3px solid #fff; border-radius: 50%; content: ""; }
+    .brand em { color: var(--red); font-style: normal; }
+    .header-link { padding: 9px 13px; border: 1px solid var(--line); border-radius: 11px; color: var(--muted); font-size: .78rem; font-weight: 850; text-decoration: none; }
+    .header-link:hover, .header-link:focus-visible { border-color: rgba(199, 255, 49, .65); color: var(--lime); }
+
+    main { max-width: 900px; margin: 0 auto; padding: 54px 24px 92px; }
+    .kicker { display: inline-flex; align-items: center; gap: 8px; color: var(--lime); font-size: .73rem; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; }
+    .kicker::before { width: 22px; height: 2px; background: currentColor; content: ""; }
+    h1 { max-width: 700px; margin: 13px 0 10px; font-size: clamp(2.8rem, 8vw, 5.3rem); font-weight: 950; letter-spacing: -.085em; line-height: .9; }
+    h1 span { color: var(--red); }
+    .updated { margin: 0; color: var(--dim); font-size: .87rem; }
+    .intro { max-width: 740px; margin: 35px 0 0; color: var(--muted); font-size: 1.08rem; }
+
+    .companion-callout { margin: 30px 0; border: 1px solid rgba(199, 255, 49, .27); border-radius: 18px; padding: 20px 21px; background: rgba(199, 255, 49, .06); }
+    .companion-callout strong { display: block; margin-bottom: 4px; color: var(--text); font-size: .92rem; }
+    .companion-callout p { margin: 0; color: var(--muted); font-size: .93rem; }
+
+    .document { display: grid; gap: 17px; margin-top: 38px; }
+    section { padding: 25px 27px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); box-shadow: 0 18px 50px rgba(0, 0, 0, .16); }
+    h2 { margin: 0 0 10px; font-size: 1.1rem; letter-spacing: -.03em; }
+    p { margin: 0; color: var(--muted); font-size: .95rem; }
+    p + p { margin-top: 12px; }
+    ul { display: grid; gap: 7px; margin: 14px 0 0; padding-left: 19px; color: var(--muted); font-size: .95rem; }
+    li::marker { color: var(--lime); }
+    .contact { background: linear-gradient(130deg, rgba(230, 57, 70, .22), rgba(255, 107, 53, .13)); }
+    .contact a { color: var(--lime); font-weight: 800; text-underline-offset: 3px; }
+    footer { max-width: 900px; margin: 0 auto; padding: 0 24px 40px; color: var(--dim); font-size: .76rem; }
+
+    @media (max-width: 600px) {
+      .site-header { padding: 17px 17px; }
+      main { padding: 36px 17px 62px; }
+      h1 { font-size: clamp(2.55rem, 14vw, 4rem); }
+      section { padding: 21px 19px; border-radius: 19px; }
+      .header-link { padding: 8px 10px; }
+    }
   </style>
 </head>
 <body>
-  <div class="header">
+  <header class="site-header">
     <div class="header-inner">
-      <div class="logo">💪</div>
-      <div class="logo-text">PhysiqAI</div>
+      <a class="brand" href="/" aria-label="PhysiqAI home"><span class="brand-mark" aria-hidden="true"></span>PHYSIQ<em>AI</em></a>
+      <a class="header-link" href="/member">Member dashboard</a>
     </div>
-  </div>
-  <div class="container">
-    <h1>Privacy Policy</h1>
-    <p class="subtitle">Last updated: June 8, 2026</p>
+  </header>
 
-    <p>PhysiqAI ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your information when you use the PhysiqAI mobile application.</p>
+  <main>
+    <span class="kicker">Legal</span>
+    <h1>Privacy<br><span>Policy.</span></h1>
+    <p class="updated">Last updated: July 22, 2026</p>
+    <p class="intro">This Privacy Policy explains how PhysiqAI collects, uses, and safeguards information when you use the PhysiqAI iOS app and its companion browser-based member dashboard.</p>
 
-    <h2>Information We Collect</h2>
-    <p>We collect the following types of information:</p>
-    <ul>
-      <li><strong>Account information:</strong> Email address and password when you register</li>
-      <li><strong>Body photos:</strong> Photos you submit for AI physique analysis</li>
-      <li><strong>Body metrics:</strong> Height, weight, age, fitness goals, and activity level you provide</li>
-      <li><strong>Usage data:</strong> How you interact with the app (screens visited, features used)</li>
-      <li><strong>Device information:</strong> Device type, operating system, and app version</li>
-    </ul>
+    <aside class="companion-callout">
+      <strong>One account, two surfaces</strong>
+      <p>The browser member dashboard uses the same secure, account-scoped training-data foundation as the next-generation iOS app. It is a companion experience and does not process payments.</p>
+    </aside>
 
-    <h2>AI Photo Analysis</h2>
-    <p>PhysiqAI uses artificial intelligence to analyze photos of your body to generate personalized fitness plans. Before any photo is processed:</p>
-    <ul>
-      <li>You will be asked for explicit consent each time you submit a photo for analysis</li>
-      <li>Photos are sent to our AI processing service and are not permanently stored on our servers</li>
-      <li>We do not share your photos with third parties for any purpose other than AI analysis</li>
-      <li>You may decline AI analysis at any time and still use other app features</li>
-    </ul>
+    <div class="document">
+      <section>
+        <h2>Information we collect</h2>
+        <p>We collect information you provide or that is generated when you use PhysiqAI, including:</p>
+        <ul>
+          <li><strong>Account information:</strong> email address, account credentials, and the profile information you choose to provide.</li>
+          <li><strong>Training information:</strong> fitness goals, available equipment, training plans, completed-session details, readiness check-ins, and support messages.</li>
+          <li><strong>Body photos and metrics:</strong> photos and body information you submit for AI physique analysis, such as height, weight, age, goals, and activity level.</li>
+          <li><strong>Usage and device information:</strong> interactions with the iOS app or member dashboard, device type, operating system, and app version.</li>
+        </ul>
+      </section>
 
-    <h2>How We Use Your Information</h2>
-    <ul>
-      <li>To generate personalized AI fitness and nutrition plans</li>
-      <li>To provide, maintain, and improve the app</li>
-      <li>To process subscription payments</li>
-      <li>To send important service-related notifications</li>
-      <li>To respond to your support requests</li>
-    </ul>
+      <section>
+        <h2>AI photo analysis</h2>
+        <p>PhysiqAI uses artificial intelligence to analyze photos you submit and to generate personalized fitness plans. Before a photo is processed:</p>
+        <ul>
+          <li>You are asked for explicit consent each time you submit a photo for analysis.</li>
+          <li>Photos are sent to our AI processing service and are not permanently stored on our servers.</li>
+          <li>We do not share photos with third parties for a purpose other than providing the requested AI analysis.</li>
+          <li>You may decline AI analysis and continue using other available features.</li>
+        </ul>
+      </section>
 
-    <h2>Data Storage and Security</h2>
-    <p>Your data is stored securely using Supabase, a SOC 2 compliant cloud database provider. We use industry-standard encryption for data in transit and at rest. We retain your account data for as long as your account is active. You may request deletion of your account and all associated data at any time through the app's Settings screen.</p>
+      <section>
+        <h2>How we use information</h2>
+        <ul>
+          <li>To provide, maintain, and improve PhysiqAI.</li>
+          <li>To generate personalized AI fitness and nutrition plans.</li>
+          <li>To provide account-scoped training, progress, and support features.</li>
+          <li>To manage App Store subscription entitlement status.</li>
+          <li>To send important service-related notifications and respond to support requests.</li>
+        </ul>
+      </section>
 
-    <h2>Subscriptions and Payments</h2>
-    <p>PhysiqAI offers a monthly subscription at $9.99/month. All payments are processed through Apple App Store or Google Play and are subject to their respective privacy policies. We do not store your payment card information.</p>
+      <section>
+        <h2>Data storage and security</h2>
+        <p>Training and account data are stored using Supabase, a cloud database provider, and are protected by account-scoped access controls. We use industry-standard encryption for data in transit and at rest. We retain account data while an account remains active unless deletion is requested or a longer retention period is required by law.</p>
+      </section>
 
-    <h2>Third-Party Services</h2>
-    <p>We use the following third-party services:</p>
-    <ul>
-      <li><strong>Supabase</strong> — secure data storage and authentication</li>
-      <li><strong>OpenAI</strong> — AI analysis of submitted photos and generation of fitness plans</li>
-      <li><strong>Apple / Google</strong> — payment processing and app distribution</li>
-    </ul>
+      <section>
+        <h2>Subscriptions and payments</h2>
+        <p>PhysiqAI subscriptions are offered through Apple’s App Store. Apple processes subscription payments under its own privacy policy and terms. PhysiqAI does not store payment-card information, and the browser member dashboard does not take payments.</p>
+      </section>
 
-    <h2>Children's Privacy</h2>
-    <p>PhysiqAI is not intended for users under the age of 16. We do not knowingly collect personal information from children under 16. If you believe a child has provided us with personal information, please contact us immediately.</p>
+      <section>
+        <h2>Third-party services</h2>
+        <p>PhysiqAI uses service providers to operate core features, including:</p>
+        <ul>
+          <li><strong>Supabase</strong> for secure data storage and authentication.</li>
+          <li><strong>OpenAI</strong> for AI analysis of submitted photos and generation of fitness plans.</li>
+          <li><strong>Apple</strong> for iOS app distribution and subscription payment processing.</li>
+        </ul>
+      </section>
 
-    <h2>Your Rights</h2>
-    <ul>
-      <li><strong>Access:</strong> Request a copy of your personal data</li>
-      <li><strong>Correction:</strong> Update inaccurate data through your account settings</li>
-      <li><strong>Deletion:</strong> Delete your account and all data via Settings > Delete Account</li>
-      <li><strong>Opt-out:</strong> Decline AI photo analysis at any time</li>
-    </ul>
+      <section>
+        <h2>Children’s privacy</h2>
+        <p>PhysiqAI is not intended for people under 16. We do not knowingly collect personal information from children under 16. If you believe a child has provided personal information, please contact us promptly.</p>
+      </section>
 
-    <h2>Changes to This Policy</h2>
-    <p>We may update this Privacy Policy from time to time. We will notify you of significant changes via the app or email. Continued use of the app after changes constitutes acceptance of the updated policy.</p>
+      <section>
+        <h2>Your rights and choices</h2>
+        <ul>
+          <li><strong>Access:</strong> you may request a copy of your personal data.</li>
+          <li><strong>Correction:</strong> you can update inaccurate account information through available account settings.</li>
+          <li><strong>Deletion:</strong> you may request deletion of your account and associated data through Settings &gt; Delete Account in the iOS app.</li>
+          <li><strong>Opt-out:</strong> you may decline AI photo analysis at any time.</li>
+        </ul>
+      </section>
 
-    <hr class="divider" />
+      <section>
+        <h2>Changes to this policy</h2>
+        <p>We may update this Privacy Policy from time to time. We will notify you of material changes through the app, the member dashboard, or email when appropriate. Continued use of PhysiqAI after an update constitutes acceptance of the revised policy.</p>
+      </section>
 
-    <h2>Contact Us</h2>
-    <p>If you have questions about this Privacy Policy, please contact us:</p>
-    <p>Email: <a href="mailto:support@physiqai.io">support@physiqai.io</a></p>
-    <p>Website: <a href="https://physiqai.io">physiqai.io</a></p>
-  </div>
+      <section class="contact">
+        <h2>Contact us</h2>
+        <p>If you have questions about this Privacy Policy, contact <a href="mailto:support@physiqai.io">support@physiqai.io</a>. You can also visit <a href="https://physiqai.io">physiqai.io</a>.</p>
+      </section>
+    </div>
+  </main>
+
+  <footer>PhysiqAI — train with intent, track the work, and build momentum.</footer>
 </body>
 </html>
