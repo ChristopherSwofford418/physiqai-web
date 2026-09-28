@@ -215,7 +215,7 @@ function renderActivePlan() {
   const plan = activePlan();
   if (!plan) {
     const empty = element('article', { className: 'plan-card' });
-    empty.append(element('span', { className: 'tag hot', text: 'Ready when you are' }), element('h3', { text: 'No active training block yet.' }), element('p', { text: 'Pick a focus and weekly cadence. Your secure account will keep this plan with you across the next-generation PhysiqAI experience.' }));
+    empty.append(element('span', { className: 'tag hot', text: 'Ready when you are' }), element('h3', { text: 'No active training block yet.' }), element('p', { text: 'Pick a focus and weekly cadence. Your account will keep this plan with you across the next-generation SetFoundry experience.' }));
     target.append(empty);
     return;
   }
@@ -244,11 +244,11 @@ function renderDashboard() {
   byId('readiness-value').textContent = readiness ? `${readiness}%` : '—';
   byId('focus-value').textContent = humanGoal(profile.training_goal);
   byId('next-workout-title').textContent = plan ? plan.title : 'Build your first training week.';
-  byId('next-workout-copy').textContent = plan ? `${planSchedule(plan).length} focused sessions are ready. Log your work and keep the chain moving.` : 'Choose a focused starter plan, then log your work here or in the PhysiqAI app.';
+  byId('next-workout-copy').textContent = plan ? `${planSchedule(plan).length} focused sessions are ready. Log your work and keep the chain moving.` : 'Choose a focused starter plan, then log your work here or in the SetFoundry app.';
   byId('next-workout-button').textContent = plan ? 'Open training plan →' : 'Build my plan →';
 
   const active = state.entitlement && ['active', 'grace_period'].includes(state.entitlement.status) && (!state.entitlement.expires_at || new Date(state.entitlement.expires_at) > new Date());
-  byId('membership-status').textContent = active ? 'Verified membership' : 'Secure account workspace';
+  byId('membership-status').textContent = active ? 'Verified membership' : 'Account workspace';
   byId('member-tier').textContent = active ? 'Verified member' : 'Member dashboard';
   byId('entitlement-copy').textContent = active ? `Verified ${state.entitlement.product_id}` : 'Membership is verified in the mobile app';
 
@@ -487,7 +487,7 @@ async function signOut() {
   state.checkIns = [];
   showAuth();
   byId('auth-form').reset();
-  toast('Signed out. Your account data remains secure.');
+  toast('Signed out. Your account data remains available when you sign back in.');
 }
 
 function bindEvents() {

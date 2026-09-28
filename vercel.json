@@ -4,6 +4,7 @@
   "rewrites": [
     { "source": "/privacy", "destination": "/privacy.html" },
     { "source": "/terms", "destination": "/terms.html" },
+    { "source": "/support", "destination": "/support.html" },
     { "source": "/member", "destination": "/member.html" }
   ],
   "headers": [

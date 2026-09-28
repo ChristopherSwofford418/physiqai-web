@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#09090b">
-  <meta name="description" content="PhysiqAI Privacy Policy for the iOS app and companion member dashboard.">
-  <title>Privacy Policy | PhysiqAI</title>
+  <meta name="description" content="SetFoundry Privacy Policy for the iOS app and companion member dashboard.">
+  <title>Privacy Policy | SetFoundry</title>
   <style>
     :root {
       --bg: #09090b;
@@ -79,7 +79,7 @@
 <body>
   <header class="site-header">
     <div class="header-inner">
-      <a class="brand" href="/" aria-label="PhysiqAI home"><span class="brand-mark" aria-hidden="true"></span>PHYSIQ<em>AI</em></a>
+      <a class="brand" href="/" aria-label="SetFoundry home"><span class="brand-mark" aria-hidden="true"></span>SET<em>FOUNDRY</em></a>
       <a class="header-link" href="/member">Member dashboard</a>
     </div>
   </header>
@@ -87,42 +87,43 @@
   <main>
     <span class="kicker">Legal</span>
     <h1>Privacy<br><span>Policy.</span></h1>
-    <p class="updated">Last updated: July 22, 2026</p>
-    <p class="intro">This Privacy Policy explains how PhysiqAI collects, uses, and safeguards information when you use the PhysiqAI iOS app and its companion browser-based member dashboard.</p>
+    <p class="updated">Last updated: September 28, 2026</p>
+    <p class="intro">This Privacy Policy explains how SetFoundry collects, uses, and safeguards information when you use the SetFoundry iOS app and its companion browser-based member dashboard.</p>
 
     <aside class="companion-callout">
       <strong>One account, two surfaces</strong>
-      <p>The browser member dashboard uses the same secure, account-scoped training-data foundation as the next-generation iOS app. It is a companion experience and does not process payments.</p>
+      <p>The browser member dashboard uses the same account-scoped training-data foundation as the next-generation iOS app. It is a companion experience and does not process payments.</p>
     </aside>
 
     <div class="document">
       <section>
         <h2>Information we collect</h2>
-        <p>We collect information you provide or that is generated when you use PhysiqAI, including:</p>
+        <p>We collect information you provide or that is generated when you use SetFoundry, including:</p>
         <ul>
-          <li><strong>Account information:</strong> email address, account credentials, and the profile information you choose to provide.</li>
+          <li><strong>Account information:</strong> email address, authentication records, and the profile name you choose to provide.</li>
           <li><strong>Training information:</strong> fitness goals, available equipment, training plans, completed-session details, readiness check-ins, and support messages.</li>
-          <li><strong>Body photos and metrics:</strong> photos and body information you submit for AI physique analysis, such as height, weight, age, goals, and activity level.</li>
-          <li><strong>Usage and device information:</strong> interactions with the iOS app or member dashboard, device type, operating system, and app version.</li>
+          <li><strong>Optional photos:</strong> a body-context or movement photo only when you expressly choose to submit it for a requested AI feature.</li>
+          <li><strong>Service metadata:</strong> limited technical, transaction, response-status, and latency information needed to authenticate requests, verify App Store subscriptions, enforce usage limits, operate the service, and investigate failures.</li>
         </ul>
       </section>
 
       <section>
         <h2>AI photo analysis</h2>
-        <p>PhysiqAI uses artificial intelligence to analyze photos you submit and to generate personalized fitness plans. Before a photo is processed:</p>
+        <p>SetFoundry uses artificial intelligence to return general training context, visible movement cues, training-readiness ideas, and workout plans. Before a photo is processed:</p>
         <ul>
-          <li>You are asked for explicit consent each time you submit a photo for analysis.</li>
-          <li>Photos are sent to our AI processing service and are not permanently stored on our servers.</li>
-          <li>We do not share photos with third parties for a purpose other than providing the requested AI analysis.</li>
-          <li>You may decline AI analysis and continue using other available features.</li>
+          <li>You see a separate confirmation immediately before each photo is uploaded and can decline without sending it.</li>
+          <li>The selected photo is sent through the SetFoundry backend to OpenAI only to provide the feature you requested.</li>
+          <li>SetFoundry does not store the submitted photo in its Supabase training database and does not log the photo or prompt content in its AI usage table.</li>
+          <li>OpenAI states that API content is not used to train its models by default. OpenAI may retain API content in abuse-monitoring logs for up to 30 days unless longer retention is legally or safety-required.</li>
+          <li>Photo features are optional. You can continue with goal, equipment, local starter-plan, and manual training features without submitting a photo.</li>
         </ul>
       </section>
 
       <section>
         <h2>How we use information</h2>
         <ul>
-          <li>To provide, maintain, and improve PhysiqAI.</li>
-          <li>To generate personalized AI fitness and nutrition plans.</li>
+          <li>To provide, maintain, and improve SetFoundry.</li>
+          <li>To generate goal- and equipment-aware workout plans and requested training cues.</li>
           <li>To provide account-scoped training, progress, and support features.</li>
           <li>To manage App Store subscription entitlement status.</li>
           <li>To send important service-related notifications and respond to support requests.</li>
@@ -131,51 +132,52 @@
 
       <section>
         <h2>Data storage and security</h2>
-        <p>Training and account data are stored using Supabase, a cloud database provider, and are protected by account-scoped access controls. We use industry-standard encryption for data in transit and at rest. We retain account data while an account remains active unless deletion is requested or a longer retention period is required by law.</p>
+        <p>The app keeps a local copy of training plans and history on your device. When you are signed in, bounded account and training records are also synchronized to Supabase and protected by account-scoped access controls. SetFoundry retains account data while your account remains active. In-app account deletion removes your Auth account and associated SetFoundry training data; limited provider security or transaction records may remain where required by law, fraud prevention, or provider safety policies.</p>
       </section>
 
       <section>
         <h2>Subscriptions and payments</h2>
-        <p>PhysiqAI subscriptions are offered through Apple’s App Store. Apple processes subscription payments under its own privacy policy and terms. PhysiqAI does not store payment-card information, and the browser member dashboard does not take payments.</p>
+        <p>SetFoundry subscriptions are offered through Apple’s App Store. Apple processes subscription payments under its own privacy policy and terms. SetFoundry does not store payment-card information, and the browser member dashboard does not take payments.</p>
       </section>
 
       <section>
         <h2>Third-party services</h2>
-        <p>PhysiqAI uses service providers to operate core features, including:</p>
+        <p>SetFoundry uses service providers to operate core features, including:</p>
         <ul>
-          <li><strong>Supabase</strong> for secure data storage and authentication.</li>
+          <li><strong>Supabase</strong> for account data storage and authentication.</li>
           <li><strong>OpenAI</strong> for AI analysis of submitted photos and generation of fitness plans.</li>
           <li><strong>Apple</strong> for iOS app distribution and subscription payment processing.</li>
         </ul>
+        <p>SetFoundry does not sell personal information and does not use third-party advertising or cross-app tracking SDKs in the iOS app.</p>
       </section>
 
       <section>
         <h2>Children’s privacy</h2>
-        <p>PhysiqAI is not intended for people under 16. We do not knowingly collect personal information from children under 16. If you believe a child has provided personal information, please contact us promptly.</p>
+        <p>SetFoundry is not intended for people under 16. We do not knowingly collect personal information from children under 16. If you believe a child has provided personal information, please contact us promptly.</p>
       </section>
 
       <section>
         <h2>Your rights and choices</h2>
         <ul>
           <li><strong>Access:</strong> you may request a copy of your personal data.</li>
-          <li><strong>Correction:</strong> you can update inaccurate account information through available account settings.</li>
-          <li><strong>Deletion:</strong> you may request deletion of your account and associated data through Settings &gt; Delete Account in the iOS app.</li>
+          <li><strong>Correction:</strong> you can update supported profile information through available account settings.</li>
+          <li><strong>Deletion:</strong> you may permanently delete your account and associated SetFoundry training data through Settings &gt; Delete Account in the iOS app.</li>
           <li><strong>Opt-out:</strong> you may decline AI photo analysis at any time.</li>
         </ul>
       </section>
 
       <section>
         <h2>Changes to this policy</h2>
-        <p>We may update this Privacy Policy from time to time. We will notify you of material changes through the app, the member dashboard, or email when appropriate. Continued use of PhysiqAI after an update constitutes acceptance of the revised policy.</p>
+        <p>We may update this Privacy Policy from time to time. We will notify you of material changes through the app, the member dashboard, or email when appropriate. Continued use of SetFoundry after an update constitutes acceptance of the revised policy.</p>
       </section>
 
       <section class="contact">
         <h2>Contact us</h2>
-        <p>If you have questions about this Privacy Policy, contact <a href="mailto:support@physiqai.io">support@physiqai.io</a>. You can also visit <a href="https://physiqai.io">physiqai.io</a>.</p>
+        <p>If you have questions about this Privacy Policy, contact <a href="mailto:support@physiqai.io">support@physiqai.io</a> or visit the <a href="/support">SetFoundry support page</a>.</p>
       </section>
     </div>
   </main>
 
-  <footer>PhysiqAI — train with intent, track the work, and build momentum.</footer>
+  <footer>SetFoundry — train with intent, track the work, and build momentum.</footer>
 </body>
 </html>

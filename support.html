@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#09090b">
+  <meta name="description" content="SetFoundry support for account access, Apple subscriptions, workout plans, optional AI photo features, and account deletion.">
+  <link rel="canonical" href="https://www.physiqai.io/support">
+  <title>Support | SetFoundry</title>
+  <style>
+    :root { --bg:#09090b; --surface:rgba(24,24,27,.9); --text:#f7f7f8; --muted:#b5b5bd; --dim:#7e7e89; --line:rgba(255,255,255,.11); --red:#e63946; --orange:#ff6b35; --lime:#c7ff31; --radius:24px; }
+    * { box-sizing:border-box; }
+    html { background:var(--bg); }
+    body { min-width:320px; margin:0; color:var(--text); background:radial-gradient(circle at 88% -8%,rgba(230,57,70,.26),transparent 29rem),radial-gradient(circle at 7% 38%,rgba(255,107,53,.10),transparent 24rem),var(--bg); font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; line-height:1.65; }
+    a { color:inherit; }
+    .site-header { max-width:1160px; margin:0 auto; padding:22px 24px; }
+    .header-inner { display:flex; align-items:center; justify-content:space-between; gap:18px; }
+    .brand { display:inline-flex; align-items:center; gap:9px; color:var(--text); font-size:1.02rem; font-weight:950; letter-spacing:-.045em; text-decoration:none; }
+    .brand-mark { display:grid; width:31px; height:31px; place-items:center; border-radius:10px; background:linear-gradient(135deg,var(--red),var(--orange)); box-shadow:0 8px 24px rgba(230,57,70,.34); }
+    .brand-mark::before { width:12px; height:12px; border:3px solid #fff; border-radius:50%; content:""; }
+    .brand em { color:var(--red); font-style:normal; }
+    .header-link { padding:9px 13px; border:1px solid var(--line); border-radius:11px; color:var(--muted); font-size:.78rem; font-weight:850; text-decoration:none; }
+    .header-link:hover,.header-link:focus-visible { border-color:rgba(199,255,49,.65); color:var(--lime); }
+    main { max-width:900px; margin:0 auto; padding:54px 24px 92px; }
+    .kicker { display:inline-flex; align-items:center; gap:8px; color:var(--lime); font-size:.73rem; font-weight:900; letter-spacing:.14em; text-transform:uppercase; }
+    .kicker::before { width:22px; height:2px; background:currentColor; content:""; }
+    h1 { max-width:720px; margin:13px 0 10px; font-size:clamp(2.8rem,8vw,5.3rem); font-weight:950; letter-spacing:-.085em; line-height:.9; }
+    h1 span { color:var(--red); }
+    .intro { max-width:740px; margin:35px 0 0; color:var(--muted); font-size:1.08rem; }
+    .quick { display:flex; flex-wrap:wrap; gap:10px; margin-top:28px; }
+    .quick a { padding:10px 13px; border:1px solid var(--line); border-radius:12px; color:var(--muted); text-decoration:none; font-size:.82rem; font-weight:800; background:rgba(255,255,255,.03); }
+    .quick a:hover,.quick a:focus-visible { border-color:var(--lime); color:var(--lime); }
+    .document { display:grid; gap:17px; margin-top:38px; }
+    section { padding:25px 27px; border:1px solid var(--line); border-radius:var(--radius); background:var(--surface); box-shadow:0 18px 50px rgba(0,0,0,.16); }
+    h2 { margin:0 0 10px; font-size:1.1rem; letter-spacing:-.03em; }
+    p { margin:0; color:var(--muted); font-size:.95rem; }
+    p+p { margin-top:12px; }
+    ol,ul { display:grid; gap:7px; margin:14px 0 0; padding-left:21px; color:var(--muted); font-size:.95rem; }
+    li::marker { color:var(--lime); }
+    code { color:#fecdd3; font-family:inherit; font-weight:850; }
+    .contact { background:linear-gradient(130deg,rgba(230,57,70,.22),rgba(255,107,53,.13)); }
+    .contact a { color:var(--lime); font-weight:850; text-underline-offset:3px; }
+    footer { max-width:900px; margin:0 auto; padding:0 24px 40px; color:var(--dim); font-size:.76rem; }
+    @media (max-width:600px) { .site-header{padding:17px}.header-inner{align-items:flex-start}.header-link{padding:8px 10px}main{padding:36px 17px 62px}h1{font-size:clamp(2.55rem,14vw,4rem)}section{padding:21px 19px;border-radius:19px} }
+  </style>
+</head>
+<body>
+  <header class="site-header"><div class="header-inner"><a class="brand" href="/" aria-label="SetFoundry home"><span class="brand-mark" aria-hidden="true"></span>SET<em>FOUNDRY</em></a><a class="header-link" href="mailto:support@physiqai.io">Email support</a></div></header>
+  <main>
+    <span class="kicker">Support</span>
+    <h1>Train with<br><span>a clear next step.</span></h1>
+    <p class="intro">Find help with sign-in, Apple subscriptions, restoring access, workout data, optional photo processing, and account deletion. SetFoundry provides general exercise education—not medical advice or a safety certification.</p>
+    <nav class="quick" aria-label="Support topics"><a href="#membership">Membership</a><a href="#restore">Restore</a><a href="#photos">Photo processing</a><a href="#delete">Delete account</a><a href="#contact">Contact</a></nav>
+
+    <div class="document">
+      <section>
+        <h2>Sign-in and account access</h2>
+        <ul><li>Use the email and password associated with your SetFoundry account.</li><li>If account creation asks for email confirmation, use the link delivered by Supabase Auth before signing in.</li><li>Membership is tied to both your Apple purchase and the signed-in SetFoundry account used to verify it.</li><li>Never send a password, Apple ID password, payment-card number, or full purchase token to support.</li></ul>
+      </section>
+
+      <section id="membership">
+        <h2>Free access and SetFoundry Plus</h2>
+        <p>New members can continue with a locally stored starter workout plan and core training log. An active, server-verified SetFoundry Plus subscription unlocks AI-generated plans, optional photo-based training context, movement cues, and other premium coaching requests.</p>
+        <p>Monthly and annual options are purchased through Apple. The exact price, billing period, and any introductory offer shown in the Apple purchase sheet control.</p>
+      </section>
+
+      <section id="restore">
+        <h2>Restore an Apple subscription</h2>
+        <ol><li>Sign in to the SetFoundry account you want linked to the subscription.</li><li>Open <code>Profile → Settings → Restore purchases</code>.</li><li>Use the same Apple ID that originally purchased the subscription.</li><li>SetFoundry sends Apple’s signed transaction to its backend for verification before access is restored.</li></ol>
+        <p>If Apple finds no active purchase, check <code>iPhone Settings → Apple Account → Subscriptions</code>. Restoring does not create a charge.</p>
+      </section>
+
+      <section id="photos">
+        <h2>Optional photo processing</h2>
+        <p>Body-context and movement photos are optional Plus features. Choosing a photo does not upload it. The app shows a separate confirmation immediately before a selected image is sent through the SetFoundry backend to OpenAI.</p>
+        <ul><li>SetFoundry does not store the submitted photo in its Supabase training database.</li><li>OpenAI states API content is not used to train its models by default and may retain API content for up to 30 days for abuse monitoring.</li><li>The response provides general training context or visible movement cues only. It does not diagnose injury, certify safety, or estimate body fat.</li><li>You can decline and continue without sending a photo.</li></ul>
+      </section>
+
+      <section>
+        <h2>Plan or coaching request did not complete</h2>
+        <ol><li>Confirm you are signed in and have an active verified membership.</li><li>Check your connection and try once more after a short wait.</li><li>Use the locally stored starter plan or existing session history while the service is unavailable.</li><li>If the issue persists, include the action you attempted, approximate time, app version, and any on-screen error in your support message. Do not attach a body or movement photo unless support specifically provides a secure reason and method.</li></ol>
+      </section>
+
+      <section>
+        <h2>Manage or cancel through Apple</h2>
+        <p>Open <code>iPhone Settings → Apple Account → Subscriptions → SetFoundry</code> to view renewal details or cancel. Deleting a SetFoundry account does not cancel an Apple subscription, and canceling an Apple subscription does not automatically delete the SetFoundry account.</p>
+      </section>
+
+      <section id="delete">
+        <h2>Delete your SetFoundry account</h2>
+        <ol><li>Open <code>Profile → Settings → Delete account</code>.</li><li>Review the permanent-deletion notice.</li><li>Type <code>DELETE</code> and confirm.</li><li>When successful, SetFoundry removes the Auth account, profile, synchronized plans, sessions, check-ins, support messages, entitlement record, and locally saved training data.</li></ol>
+        <p>You must separately manage any Apple subscription in Apple Account settings.</p>
+      </section>
+
+      <section id="contact" class="contact">
+        <h2>Contact SetFoundry support</h2>
+        <p>Use the in-app support form or email <a href="mailto:support@physiqai.io">support@physiqai.io</a>. Include your account email, app version, the feature involved, and a short description. Do not send passwords, card details, signed transaction payloads, or sensitive photos.</p>
+        <p>For policy details, read the <a href="/privacy">Privacy Policy</a> and <a href="/terms">Terms of Service</a>.</p>
+      </section>
+    </div>
+  </main>
+  <footer>SetFoundry — train with intent, track the work, and build momentum.</footer>
+</body>
+</html>
